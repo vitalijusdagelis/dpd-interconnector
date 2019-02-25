@@ -1,0 +1,25 @@
+{
+    "name": "omniva/dpd-interconnector",
+    "description": "DPD Interconnector API Client",
+    "type": "library",
+    "require": {
+        "php": ">=7.1",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^5.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aurimas Baubkus",
+            "email": "ab@nebijokit.lt"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "DPD\\Interconnector\\": "src/"
+        }
+    }
+}
