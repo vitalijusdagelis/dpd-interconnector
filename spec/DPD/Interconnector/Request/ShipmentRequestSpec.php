@@ -53,4 +53,29 @@ class ShipmentRequestSpec extends ObjectBehavior
 
         $this->toArray()->shouldReturn($expectedArray);
     }
+
+    public function it_should_convert_to_array_without_cod(Authentication $auth)
+    {
+        $auth->toArray()->willReturn(['username' => 'username', 'password' => 'password']);
+
+        $this->beConstructedWith($auth, $this->name, $this->street, $this->city, $this->country, $this->postalCode, $this->numberOfParcels, $this->phone, $this->orderNumber, $this->remark);
+
+        $expectedArray = [
+            'username' => 'username',
+            'password' => 'password',
+            'name1' => $this->name,
+            'street' => $this->street,
+            'city' => $this->city,
+            'country' => $this->country,
+            'pcode' => $this->postalCode,
+            'num_of_parcel' => $this->numberOfParcels,
+            'phone' => $this->phone,
+            'idm_sms_number' => $this->phone,
+            'order_number' => $this->orderNumber,
+            'remark' => $this->remark,
+            'parcel_type' => 'D-B2C'
+        ];
+
+        $this->toArray()->shouldReturn($expectedArray);   
+    }
 }

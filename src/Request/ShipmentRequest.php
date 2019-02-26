@@ -30,7 +30,7 @@ class ShipmentRequest implements RequestInterface
         string $phone,
         string $orderNumber,
         string $remark,
-        float $codAmount
+        float $codAmount = 0.0
     ) {
        $this->authentication = $auth;
        $this->name = $name;
