@@ -8,6 +8,11 @@ use DPD\Interconnector\Authentication;
 
 class LabelsRequestSpec extends ObjectBehavior
 {
+    public function let(Authentication $auth)
+    {
+        $this->beConstructedWith($auth, [], 'pdf', 'A6');
+    }
+
     public function it_is_initializable()
     {
         $this->shouldHaveType(LabelsRequest::class);

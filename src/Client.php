@@ -17,7 +17,7 @@ class Client extends GuzzleClient
             'POST',
             self::ENDPOINT_URL . '/ws-mapper-rest/createShipment_',
             [
-                'form_params' => $shipment,
+                'form_params' => $shipment->toArray(),
                 'verify' => false
             ]
         );
