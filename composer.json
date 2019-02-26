@@ -1,5 +1,5 @@
 {
-    "name": "omniva/dpd-interconnector",
+    "name": "nebijokit/dpd-interconnector",
     "description": "DPD Interconnector API Client",
     "type": "library",
     "require": {
