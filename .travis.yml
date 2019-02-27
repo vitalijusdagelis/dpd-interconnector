@@ -1,0 +1,14 @@
+language: php
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+php:
+    - '7.1'
+
+install:
+    - composer install --dev
+
+script:
+   - ./vendor/bin/phpspec run --format=dot
