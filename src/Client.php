@@ -12,7 +12,7 @@ class Client extends GuzzleClient
     /**
      * test endpoint for Estonia
      */
-    const EE_TEST_ENDPOINT_URL = 'https://ee.integration.dpd.eo.pl/';
+    const EE_TEST_ENDPOINT_URL = 'https://ee.integration.dpd.eo.pl/ws-mapper-rest/';
 
     /**
      * production endpoint for Estonia
@@ -22,7 +22,7 @@ class Client extends GuzzleClient
     /**
      * test endpoint for Latvia
      */
-    const LV_TEST_ENDPOINT_URL = 'https://lv.integration.dpd.eo.pl/';
+    const LV_TEST_ENDPOINT_URL = 'https://lv.integration.dpd.eo.pl/ws-mapper-rest/';
 
     /**
      * production endpoint for Latvia
@@ -32,7 +32,7 @@ class Client extends GuzzleClient
     /**
      * test endpoint for Lithuania
      */
-    const LT_TEST_ENDPOINT_URL = 'https://lt.integration.dpd.eo.pl/';
+    const LT_TEST_ENDPOINT_URL = 'https://lt.integration.dpd.eo.pl/ws-mapper-rest/';
 
     /**
      * production endpoint for Lithuania
@@ -43,7 +43,7 @@ class Client extends GuzzleClient
     {
         return $this->request(
             'POST',
-            self::EE_PRODUCTION_ENDPOINT_URL . '/ws-mapper-rest/createShipment_',
+            self::EE_PRODUCTION_ENDPOINT_URL . '/createShipment_',
             [
                 'form_params' => $shipment->toArray(),
                 'verify' => false
@@ -55,7 +55,7 @@ class Client extends GuzzleClient
     {
         return $this->request(
             'POST',
-            self::EE_PRODUCTION_ENDPOINT_URL . '/ws-mapper-rest/parcelPrint_',
+            self::EE_PRODUCTION_ENDPOINT_URL . '/parcelPrint_',
             [
                 'form_params' => $request->toArray(),
                 'verify' => false
@@ -67,7 +67,7 @@ class Client extends GuzzleClient
     {
         return $this->request(
             'POST',
-            self::EE_PRODUCTION_ENDPOINT_URL . '/ws-mapper-rest/parcelManifestPrint_',
+            self::EE_PRODUCTION_ENDPOINT_URL . '/parcelManifestPrint_',
             [
                 'form_params' => $request->toArray(),
                 'verify' => false
