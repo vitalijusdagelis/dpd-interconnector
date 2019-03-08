@@ -5,6 +5,7 @@ namespace DPD\Interconnector;
 use GuzzleHttp\Client as GuzzleClient;
 use Psr\Http\Message\ResponseInterface;
 use DPD\Interconnector\Request\LabelsRequest;
+use DPD\Interconnector\Request\ManifestRequest;
 use DPD\Interconnector\Request\ShipmentRequest;
 
 class Client extends GuzzleClient
