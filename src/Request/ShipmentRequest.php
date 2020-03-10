@@ -32,17 +32,17 @@ class ShipmentRequest implements RequestInterface
         string $remark,
         float $codAmount = 0.0
     ) {
-       $this->authentication = $auth;
-       $this->name = $name;
-       $this->street = $street;
-       $this->city = $city;
-       $this->country = $country;
-       $this->postalCode = $postalCode;
-       $this->numberOfParcels = $numberOfParcels;
-       $this->phone = $phone;
-       $this->orderNumber = $orderNumber;
-       $this->remark = $remark; 
-       $this->codAmount = $codAmount;
+        $this->authentication = $auth;
+        $this->name = $name;
+        $this->street = $street;
+        $this->city = $city;
+        $this->country = $country;
+        $this->postalCode = $postalCode;
+        $this->numberOfParcels = $numberOfParcels;
+        $this->phone = $phone;
+        $this->orderNumber = $orderNumber;
+        $this->remark = $remark;
+        $this->codAmount = $codAmount;
     }
 
     public function toArray(): array
@@ -71,5 +71,10 @@ class ShipmentRequest implements RequestInterface
         }
 
         return $request;
+    }
+
+    public function getCountry(): string
+    {
+        return $this->authentication->country;
     }
 }

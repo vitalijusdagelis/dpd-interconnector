@@ -19,4 +19,9 @@ class ManifestRequest implements RequestInterface
             ['date' => $this->date->format("Y-m-d")]
         );
     }
+
+    public function getCountry(): string
+    {
+        return $this->authentication->country;
+    }
 }

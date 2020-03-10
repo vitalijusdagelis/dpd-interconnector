@@ -34,4 +34,9 @@ class LabelsRequest implements RequestInterface
     {
         return implode('|', $this->trackingNumbers);
     }
+
+    public function getCountry(): string
+    {
+        $this->authentication->country;
+    }
 }

@@ -44,7 +44,7 @@ class Client extends GuzzleClient
     {
         return $this->request(
             'POST',
-            self::EE_PRODUCTION_ENDPOINT_URL . '/createShipment_',
+            $this->getEndpointUrl($shipment->getCountry()) . '/createShipment_',
             [
                 'form_params' => $shipment->toArray(),
                 'verify' => false
@@ -56,7 +56,7 @@ class Client extends GuzzleClient
     {
         return $this->request(
             'POST',
-            self::EE_PRODUCTION_ENDPOINT_URL . '/parcelPrint_',
+            $this->getEndpointUrl($request->getCountry()) . '/parcelPrint_',
             [
                 'form_params' => $request->toArray(),
                 'verify' => false
@@ -68,11 +68,24 @@ class Client extends GuzzleClient
     {
         return $this->request(
             'POST',
-            self::EE_PRODUCTION_ENDPOINT_URL . '/parcelManifestPrint_',
+            $this->getEndpointUrl($request->getCountry()) . '/parcelManifestPrint_',
             [
                 'form_params' => $request->toArray(),
                 'verify' => false
             ]
         );
+    }
+
+    private function getEndpointUrl(string $country)
+    {
+        switch ($country) {
+            case 'LT':
+                return self::LT_PRODUCTION_ENDPOINT_URL;
+            case 'LV':
+                return self::LV_PRODUCTION_ENDPOINT_URL;
+            case 'EE':
+            default:
+                return self::EE_PRODUCTION_ENDPOINT_URL;
+        }
     }
 }
