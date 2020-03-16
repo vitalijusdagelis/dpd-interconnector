@@ -31,4 +31,10 @@ class DeleteShipmentRequestSpec extends ObjectBehavior
             'parcels' => implode('|', $trackingNumbers)
         ]);
     }
+
+    public function it_should_return_correct_endpoint_url(Authentication $auth)
+    {
+        $auth->getEndpointUrl()->willReturn(Authentication::LT_PRODUCTION_ENDPOINT_URL);
+        $this->getEndpointUrl()->shouldReturn(Authentication::LT_PRODUCTION_ENDPOINT_URL);
+    }
 }

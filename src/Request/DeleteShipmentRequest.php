@@ -4,15 +4,14 @@ namespace DPD\Interconnector\Request;
 
 use DPD\Interconnector\Authentication;
 
-class DeleteShipmentRequest implements RequestInterface
+class DeleteShipmentRequest extends Request implements RequestInterface
 {
-    private $authentication;
-
     private $trackingNumbers = [];
 
     public function __construct(Authentication $authentication, array $trackingNumbers)
     {
-        $this->authentication = $authentication;
+        parent::__construct($authentication);
+
         $this->trackingNumbers = $trackingNumbers;
     }
 
@@ -27,10 +26,5 @@ class DeleteShipmentRequest implements RequestInterface
     public function getTrackingNumbers(): string
     {
         return implode('|', $this->trackingNumbers);
-    }
-
-    public function getCountry(): string
-    {
-        return $this->authentication->country;
     }
 }

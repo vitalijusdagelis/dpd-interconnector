@@ -31,5 +31,12 @@ class ManifestRequestSpec extends ObjectBehavior
             'date' => $date->format("Y-m-d")
         ]);
     }
+
+    public function it_should_return_correct_endpoint_url(Authentication $auth)
+    {
+        $this->beConstructedWith($auth, new \DateTime());
+        $auth->getEndpointUrl()->willReturn(Authentication::LT_PRODUCTION_ENDPOINT_URL);
+        $this->getEndpointUrl()->shouldReturn(Authentication::LT_PRODUCTION_ENDPOINT_URL);
+    }
 }
 

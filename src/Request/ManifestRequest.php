@@ -4,11 +4,14 @@ namespace DPD\Interconnector\Request;
 
 use DPD\Interconnector\Authentication;
 
-class ManifestRequest implements RequestInterface
+class ManifestRequest extends Request implements RequestInterface
 {
+    private $date;
+
     public function __construct(Authentication $authentication, \DateTime $date)
     {
-        $this->authentication = $authentication;
+        parent::__construct($authentication);
+
         $this->date = $date;
     }
 
@@ -18,10 +21,5 @@ class ManifestRequest implements RequestInterface
             $this->authentication->toArray(), 
             ['date' => $this->date->format("Y-m-d")]
         );
-    }
-
-    public function getCountry(): string
-    {
-        return $this->authentication->country;
     }
 }
