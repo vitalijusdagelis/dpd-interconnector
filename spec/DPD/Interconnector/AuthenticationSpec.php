@@ -9,7 +9,7 @@ class AuthenticationSpec extends ObjectBehavior
 {
     public function let()
     {
-        $this->beConstructedWith('username', 'password');
+        $this->beConstructedWith('username', 'password', 'country');
     }
 
     public function it_is_initializable()
@@ -23,5 +23,19 @@ class AuthenticationSpec extends ObjectBehavior
             'username' => 'username',
             'password' => 'password'
         ]);
+    }
+
+    public function it_should_return_correct_lt_endpoint_url()
+    {
+        $this->beConstructedWith('username', 'password', 'LT');
+
+        $this->getEndpointUrl()->shouldReturn(Authentication::LT_PRODUCTION_ENDPOINT_URL);
+    }
+
+    public function it_should_return_correct_lv_endpoint_url()
+    {
+        $this->beConstructedWith('username', 'password', 'LV');
+
+        $this->getEndpointUrl()->shouldReturn(Authentication::LV_PRODUCTION_ENDPOINT_URL);
     }
 }

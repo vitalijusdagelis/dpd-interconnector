@@ -5,9 +5,8 @@ namespace DPD\Interconnector\Request;
 use DPD\Interconnector\Authentication;
 
 
-class ShipmentRequest implements RequestInterface
+class ShipmentRequest extends Request implements RequestInterface
 {
-    private $authentication;
     private $name;
     private $street;
     private $city;
@@ -32,7 +31,8 @@ class ShipmentRequest implements RequestInterface
         string $remark,
         float $codAmount = 0.0
     ) {
-        $this->authentication = $auth;
+        parent::__construct($auth);
+
         $this->name = $name;
         $this->street = $street;
         $this->city = $city;
@@ -71,10 +71,5 @@ class ShipmentRequest implements RequestInterface
         }
 
         return $request;
-    }
-
-    public function getCountry(): string
-    {
-        return $this->authentication->country;
     }
 }

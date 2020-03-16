@@ -4,17 +4,16 @@ namespace DPD\Interconnector\Request;
 
 use DPD\Interconnector\Authentication;
 
-class LabelsRequest implements RequestInterface
+class LabelsRequest extends Request implements RequestInterface
 {
-    private $authentication;
-
     private $trackingNumbers = [];
 
     private $printInfo = [];
 
     public function __construct(Authentication $authentication, array $trackingNumbers, string $printType, string $printFormat)
     {
-        $this->authentication = $authentication;
+        parent::__construct($authentication);
+
         $this->trackingNumbers = $trackingNumbers;
         $this->printInfo = [
             'type' => $printType,
@@ -33,10 +32,5 @@ class LabelsRequest implements RequestInterface
     public function getTrackingNumbers(): string
     {
         return implode('|', $this->trackingNumbers);
-    }
-
-    public function getCountry(): string
-    {
-        $this->authentication->country;
     }
 }
