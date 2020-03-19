@@ -5,9 +5,8 @@ namespace DPD\Interconnector\Request;
 use DPD\Interconnector\Authentication;
 
 
-class ShipmentRequest implements RequestInterface
+class ShipmentRequest extends Request implements RequestInterface
 {
-    private $authentication;
     private $name;
     private $street;
     private $city;
@@ -32,17 +31,18 @@ class ShipmentRequest implements RequestInterface
         string $remark,
         float $codAmount = 0.0
     ) {
-       $this->authentication = $auth;
-       $this->name = $name;
-       $this->street = $street;
-       $this->city = $city;
-       $this->country = $country;
-       $this->postalCode = $postalCode;
-       $this->numberOfParcels = $numberOfParcels;
-       $this->phone = $phone;
-       $this->orderNumber = $orderNumber;
-       $this->remark = $remark; 
-       $this->codAmount = $codAmount;
+        parent::__construct($auth);
+
+        $this->name = $name;
+        $this->street = $street;
+        $this->city = $city;
+        $this->country = $country;
+        $this->postalCode = $postalCode;
+        $this->numberOfParcels = $numberOfParcels;
+        $this->phone = $phone;
+        $this->orderNumber = $orderNumber;
+        $this->remark = $remark;
+        $this->codAmount = $codAmount;
     }
 
     public function toArray(): array
