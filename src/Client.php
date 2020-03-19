@@ -7,16 +7,17 @@ use Psr\Http\Message\ResponseInterface;
 use DPD\Interconnector\Request\LabelsRequest;
 use DPD\Interconnector\Request\ManifestRequest;
 use DPD\Interconnector\Request\ShipmentRequest;
+use DPD\Interconnector\Request\DeleteShipmentRequest;
 
 class Client extends GuzzleClient
 {
-    public function createShipment(ShipmentRequest $shipment): ResponseInterface
+    public function createShipment(ShipmentRequest $request): ResponseInterface
     {
         return $this->request(
             'POST',
-            $shipment->getEndpointUrl() . '/createShipment_',
+            $request->getEndpointUrl() . '/createShipment_',
             [
-                'form_params' => $shipment->toArray(),
+                'form_params' => $request->toArray(),
                 'verify' => false
             ]
         );
@@ -39,6 +40,18 @@ class Client extends GuzzleClient
         return $this->request(
             'POST',
             $request->getEndpointUrl() . '/parcelManifestPrint_',
+            [
+                'form_params' => $request->toArray(),
+                'verify' => false
+            ]
+        );
+    }
+
+    public function removeShipment(DeleteShipmentRequest $request): ResponseInterface
+    {
+        return $this->request(
+            'POST',
+            $request->getEndpointUrl() . '/parcelDelete_',
             [
                 'form_params' => $request->toArray(),
                 'verify' => false
