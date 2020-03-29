@@ -3,11 +3,12 @@
     "description": "DPD Interconnector API Client",
     "type": "library",
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.2",
         "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
-        "phpspec/phpspec": "^5.1"
+        "phpspec/phpspec": "^6.1",
+        "friends-of-phpspec/phpspec-code-coverage": "^4.3"
     },
     "license": "MIT",
     "authors": [

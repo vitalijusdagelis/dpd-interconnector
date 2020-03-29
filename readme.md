@@ -9,13 +9,13 @@ PHP wrapper for courier DPD Interconnector API integration.
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nebijokit/dpd-interconnector/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nebijokit/dpd-interconnector/?branch=master)
 [![SymfonyInsight](https://insight.symfony.com/projects/019f31b7-8a56-47c5-b2c4-7a1e722471d3/mini.svg)](https://insight.symfony.com/projects/019f31b7-8a56-47c5-b2c4-7a1e722471d3)
 
-
-Documentation can be found [here](ftp://ftp.dpd.ee/Integratsioon/Interconnector_dokumentatsioon.pdf).
+Official DPD [documentation](ftp://ftp.dpd.ee/Integratsioon/Interconnector_dokumentatsioon.pdf).
 
 Services which are implemented:
 - Create Shipment
 - Get Labels
 - Close Manifest
+- Remove Shipment
 
 # Todo
 
@@ -23,6 +23,6 @@ Services which are implemented:
 - allow to define which API endpoint to use. Pass GuzzleHttp/Client as a parameter to Client constructor
 - use Money value object to represent COD;
 - decouple Guzzle/Http from Client & test services;
-- move request data to separate objects (Shipment, Label, Manifest)
 - use print type, print format & service codes as constants;
 - add validation (Symfony/Constraint) for Requests data;
+- move _parcel_type_ to Enum;

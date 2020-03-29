@@ -1,2 +1,5 @@
 
 /vendor/
+
+# ignore code coverage generated directory
+/coverage/

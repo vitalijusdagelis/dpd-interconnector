@@ -8,6 +8,7 @@ use DPD\Interconnector\Request\LabelsRequest;
 use DPD\Interconnector\Request\ManifestRequest;
 use DPD\Interconnector\Request\ShipmentRequest;
 use DPD\Interconnector\Request\DeleteShipmentRequest;
+use DPD\Interconnector\Request\ParcelShopSearchRequest;
 
 class Client extends GuzzleClient
 {
@@ -52,6 +53,18 @@ class Client extends GuzzleClient
         return $this->request(
             'POST',
             $request->getEndpointUrl() . '/parcelDelete_',
+            [
+                'form_params' => $request->toArray(),
+                'verify' => false
+            ]
+        );
+    }
+
+    public function findParcelShop(ParcelShopSearchRequest $request): ResponseInterface
+    {
+        return $this->request(
+            'POST',
+            $request->getEndpointUrl() . '/parcelShopSearch_',
             [
                 'form_params' => $request->toArray(),
                 'verify' => false

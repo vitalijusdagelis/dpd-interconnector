@@ -17,6 +17,7 @@ class ShipmentRequest extends Request implements RequestInterface
     private $orderNumber;
     private $remark;
     private $codAmount;
+    private $parcelShopId;
 
     public function __construct(
         Authentication $auth,
@@ -29,7 +30,8 @@ class ShipmentRequest extends Request implements RequestInterface
         string $phone,
         string $orderNumber,
         string $remark,
-        float $codAmount = 0.0
+        float $codAmount = 0.0,
+        ?string $parcelShopId = null
     ) {
         parent::__construct($auth);
 
@@ -43,6 +45,7 @@ class ShipmentRequest extends Request implements RequestInterface
         $this->orderNumber = $orderNumber;
         $this->remark = $remark;
         $this->codAmount = $codAmount;
+        $this->parcelShopId = $parcelShopId;
     }
 
     public function toArray(): array
@@ -63,12 +66,17 @@ class ShipmentRequest extends Request implements RequestInterface
             ]
         );
 
-        if ($this->codAmount) {
-            $request['parcel_type'] = 'D-B2C-COD';
-            $request['cod_amount'] = $this->codAmount;
-        } else {
-            $request['parcel_type'] = 'D-B2C';
+        $parcelType = 'D-B2C';
+        if ($this->parcelShopId) {
+            $parcelType = 'PS';
         }
+
+        if ($this->codAmount) {
+            $parcelType .= '-COD';
+            $request['cod_amount'] = $this->codAmount;
+        }
+
+        $request['parcel_type'] = $parcelType;
 
         return $request;
     }
