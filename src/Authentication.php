@@ -34,6 +34,10 @@ class Authentication
      */
     const LT_PRODUCTION_ENDPOINT_URL = 'https://integracijos.dpd.lt/ws-mapper-rest/';
 
+    private $username;
+    private $password;
+    private $country;
+
     public function __construct(string $username, string $password, string $country = 'EE')
     {
         $this->username = $username;
