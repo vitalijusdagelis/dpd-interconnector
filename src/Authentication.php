@@ -55,14 +55,8 @@ class Authentication
 
     public function getEndpointUrl(): string
     {
-        switch ($this->country) {
-            case 'LT':
-                return self::LT_PRODUCTION_ENDPOINT_URL;
-            case 'LV':
-                return self::LV_PRODUCTION_ENDPOINT_URL;
-            case 'EE':
-            default:
-                return self::EE_PRODUCTION_ENDPOINT_URL;
-        }
+        $const = $this->country . '_PRODUCTION_ENDPOINT_URL';
+
+        return constant('self::' . $const);
     }
 }
