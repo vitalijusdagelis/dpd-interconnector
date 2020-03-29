@@ -3,7 +3,7 @@
     "description": "DPD Interconnector API Client",
     "type": "library",
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.2",
         "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
