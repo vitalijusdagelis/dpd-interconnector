@@ -68,6 +68,7 @@ class ShipmentRequest extends Request implements RequestInterface
 
         $parcelType = 'D-B2C';
         if ($this->parcelShopId) {
+            $request['parcelshop_id'] = $this->parcelShopId;
             $parcelType = 'PS';
         }
 

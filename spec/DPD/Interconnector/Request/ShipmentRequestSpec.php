@@ -105,6 +105,7 @@ class ShipmentRequestSpec extends ObjectBehavior
             'idm_sms_number' => $this->phone,
             'order_number' => $this->orderNumber,
             'remark' => $this->remark,
+            'parcelshop_id' => $this->parcelShopId,
             'parcel_type' => 'PS'
         ];
 
@@ -130,6 +131,7 @@ class ShipmentRequestSpec extends ObjectBehavior
             'idm_sms_number' => $this->phone,
             'order_number' => $this->orderNumber,
             'remark' => $this->remark,
+            'parcelshop_id' => $this->parcelShopId,
             'cod_amount' => $this->codAmount,
             'parcel_type' => 'PS-COD'
         ];
