@@ -10,6 +10,7 @@ use DPD\Interconnector\Authentication;
 class ShipmentRequestSpec extends ObjectBehavior
 {
     private $name = 'name';
+    private $name2 = 'name2';
     private $street = 'street';
     private $city = 'city';
     private $country = 'country';
@@ -25,7 +26,7 @@ class ShipmentRequestSpec extends ObjectBehavior
     {
         $auth->toArray()->willReturn(['username' => 'username', 'password' => 'password']);
 
-        $this->beConstructedWith($auth, $this->name, $this->street, $this->city, $this->country, $this->postalCode, $this->numberOfParcels, $this->phone, $this->orderNumber, $this->remark, $this->codAmount);
+        $this->beConstructedWith($auth, $this->name, $this->street, $this->city, $this->country, $this->postalCode, $this->numberOfParcels, $this->phone, $this->orderNumber, $this->remark, $this->codAmount, null, $this->name2);
     }
 
     public function it_is_initializable()
@@ -39,6 +40,7 @@ class ShipmentRequestSpec extends ObjectBehavior
             'username' => 'username',
             'password' => 'password',
             'name1' => $this->name,
+            'name2' => $this->name2,
             'street' => $this->street,
             'city' => $this->city,
             'country' => $this->country,
@@ -65,6 +67,7 @@ class ShipmentRequestSpec extends ObjectBehavior
             'username' => 'username',
             'password' => 'password',
             'name1' => $this->name,
+            'name2' => null,
             'street' => $this->street,
             'city' => $this->city,
             'country' => $this->country,
@@ -96,6 +99,7 @@ class ShipmentRequestSpec extends ObjectBehavior
             'username' => 'username',
             'password' => 'password',
             'name1' => $this->name,
+            'name2' => null,
             'street' => $this->street,
             'city' => $this->city,
             'country' => $this->country,
@@ -122,6 +126,7 @@ class ShipmentRequestSpec extends ObjectBehavior
             'username' => 'username',
             'password' => 'password',
             'name1' => $this->name,
+            'name2' => null,
             'street' => $this->street,
             'city' => $this->city,
             'country' => $this->country,

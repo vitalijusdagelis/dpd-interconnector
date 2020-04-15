@@ -18,6 +18,7 @@ class ShipmentRequest extends Request implements RequestInterface
     private $remark;
     private $codAmount;
     private $parcelShopId;
+    private $name2;
 
     public function __construct(
         Authentication $auth,
@@ -31,11 +32,13 @@ class ShipmentRequest extends Request implements RequestInterface
         string $orderNumber,
         string $remark,
         float $codAmount = 0.0,
-        ?string $parcelShopId = null
+        ?string $parcelShopId = null,
+        string $name2 = null
     ) {
         parent::__construct($auth);
 
         $this->name = $name;
+        $this->name2 = $name2;
         $this->street = $street;
         $this->city = $city;
         $this->country = $country;
@@ -54,6 +57,7 @@ class ShipmentRequest extends Request implements RequestInterface
             $this->authentication->toArray(),
             [
                 'name1' => $this->name,
+                'name2' => $this->name2,
                 'street' => $this->street,
                 'city' => $this->city,
                 'country' => $this->country,
