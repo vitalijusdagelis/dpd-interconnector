@@ -9,13 +9,19 @@ PHP wrapper for courier DPD Interconnector API integration.
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nebijokit/dpd-interconnector/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nebijokit/dpd-interconnector/?branch=master)
 [![SymfonyInsight](https://insight.symfony.com/projects/019f31b7-8a56-47c5-b2c4-7a1e722471d3/mini.svg)](https://insight.symfony.com/projects/019f31b7-8a56-47c5-b2c4-7a1e722471d3)
 
-Official DPD [documentation](ftp://ftp.dpd.ee/Integratsioon/Interconnector_dokumentatsioon.pdf).
+Official DPD documentation: ftp://ftp.dpd.ee/Integratsioon/Interconnector_dokumentatsioon.pdf.
 
-Services which are implemented:
+Implemented endpoints:
 - Create Shipment
 - Get Labels
 - Close Manifest
 - Remove Shipment
+
+## Installiation
+
+```
+composer req nebijokit/dpd-interconnector
+```
 
 # Todo
 
