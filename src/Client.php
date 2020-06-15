@@ -16,7 +16,7 @@ class Client extends GuzzleClient
     {
         return $this->request(
             'POST',
-            $request->getEndpointUrl() . '/createShipment_',
+            $request->getEndpointUrl() . 'createShipment_',
             [
                 'form_params' => $request->toArray(),
                 'verify' => false
@@ -28,7 +28,7 @@ class Client extends GuzzleClient
     {
         return $this->request(
             'POST',
-            $request->getEndpointUrl() . '/parcelPrint_',
+            $request->getEndpointUrl() . 'parcelPrint_',
             [
                 'form_params' => $request->toArray(),
                 'verify' => false
@@ -40,7 +40,7 @@ class Client extends GuzzleClient
     {
         return $this->request(
             'POST',
-            $request->getEndpointUrl() . '/parcelManifestPrint_',
+            $request->getEndpointUrl() . 'parcelManifestPrint_',
             [
                 'form_params' => $request->toArray(),
                 'verify' => false
@@ -52,7 +52,7 @@ class Client extends GuzzleClient
     {
         return $this->request(
             'POST',
-            $request->getEndpointUrl() . '/parcelDelete_',
+            $request->getEndpointUrl() . 'parcelDelete_',
             [
                 'form_params' => $request->toArray(),
                 'verify' => false
@@ -64,7 +64,7 @@ class Client extends GuzzleClient
     {
         return $this->request(
             'POST',
-            $request->getEndpointUrl() . '/parcelShopSearch_',
+            $request->getEndpointUrl() . 'parcelShopSearch_',
             [
                 'form_params' => $request->toArray(),
                 'verify' => false
