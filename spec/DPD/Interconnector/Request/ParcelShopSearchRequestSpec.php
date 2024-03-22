@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\DPD\Interconnector\Request;
 
 use DPD\Interconnector\Authentication;
@@ -7,16 +9,16 @@ use PhpSpec\ObjectBehavior;
 
 class ParcelShopSearchRequestSpec extends ObjectBehavior
 {
-    private $username = 'username';
-    private $password = 'password';
+    private string $username = 'username';
+    private string $password = 'password';
 
-    public function let()
+    public function let(): void
     {
         $auth = new Authentication($this->username, $this->password);
         $this->beConstructedWith($auth);
     }
 
-    public function it_should_transform_to_array()
+    public function it_should_transform_to_array(): void
     {
         $auth = new Authentication($this->username, $this->password);
         $fetchGsPUDOpoint = false;

@@ -1,18 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DPD\Interconnector\Request;
 
 use DPD\Interconnector\Authentication;
 
 abstract class Request implements RequestInterface
 {
-    protected $authentication;
-
-    public function __construct(Authentication $auth)
+    public function __construct(protected Authentication $authentication)
     {
-        $this->authentication = $auth;
     }
 
+    #[\Override]
     public function getEndpointUrl(): string
     {
         return $this->authentication->getEndpointUrl();

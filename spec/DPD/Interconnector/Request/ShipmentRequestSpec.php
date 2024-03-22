@@ -1,40 +1,41 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\DPD\Interconnector\Request;
 
 use PhpSpec\ObjectBehavior;
 use DPD\Interconnector\Request\ShipmentRequest;
 use DPD\Interconnector\Authentication;
 
-
 class ShipmentRequestSpec extends ObjectBehavior
 {
-    private $name = 'name';
-    private $name2 = 'name2';
-    private $street = 'street';
-    private $city = 'city';
-    private $country = 'country';
-    private $postalCode = '00000';
-    private $numberOfParcels = 1;
-    private $phone = '+37067000000';
-    private $orderNumber = 'ORD12345';
-    private $remark = 'remark';
-    private $codAmount = 79.0;
-    private $parcelShopId = 'EE91011';
+    private string $name = 'name';
+    private string $name2 = 'name2';
+    private string $street = 'street';
+    private string $city = 'city';
+    private string $country = 'country';
+    private string $postalCode = '00000';
+    private int $numberOfParcels = 1;
+    private string $phone = '+37067000000';
+    private string $orderNumber = 'ORD12345';
+    private string $remark = 'remark';
+    private float $codAmount = 79.0;
+    private string $parcelShopId = 'EE91011';
 
-    public function let(Authentication $auth)
+    public function let(Authentication $auth): void
     {
         $auth->toArray()->willReturn(['username' => 'username', 'password' => 'password']);
 
         $this->beConstructedWith($auth, $this->name, $this->street, $this->city, $this->country, $this->postalCode, $this->numberOfParcels, $this->phone, $this->orderNumber, $this->remark, $this->codAmount, null, $this->name2);
     }
 
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(ShipmentRequest::class);
     }
 
-    public function it_should_convert_to_array_with_cod()
+    public function it_should_convert_to_array_with_cod(): void
     {
         $expectedArray = [
             'username' => 'username',
@@ -57,7 +58,7 @@ class ShipmentRequestSpec extends ObjectBehavior
         $this->toArray()->shouldReturn($expectedArray);
     }
 
-    public function it_should_convert_to_array_without_cod(Authentication $auth)
+    public function it_should_convert_to_array_without_cod(Authentication $auth): void
     {
         $auth->toArray()->willReturn(['username' => 'username', 'password' => 'password']);
 
@@ -80,16 +81,16 @@ class ShipmentRequestSpec extends ObjectBehavior
             'parcel_type' => 'D-B2C'
         ];
 
-        $this->toArray()->shouldReturn($expectedArray);   
+        $this->toArray()->shouldReturn($expectedArray);
     }
 
-    public function it_should_return_correct_endpoint_url(Authentication $auth)
+    public function it_should_return_correct_endpoint_url(Authentication $auth): void
     {
         $auth->getEndpointUrl()->willReturn(Authentication::LT_PRODUCTION_ENDPOINT_URL);
         $this->getEndpointUrl()->shouldReturn(Authentication::LT_PRODUCTION_ENDPOINT_URL);
     }
 
-    public function it_should_convert_to_array_for_parcel_shop(Authentication $auth)
+    public function it_should_convert_to_array_for_parcel_shop(Authentication $auth): void
     {
         $auth->toArray()->willReturn(['username' => 'username', 'password' => 'password']);
 
@@ -116,7 +117,7 @@ class ShipmentRequestSpec extends ObjectBehavior
         $this->toArray()->shouldReturn($expectedArray);
     }
 
-    public function it_should_convert_to_array_for_parcel_shop_with_cod(Authentication $auth)
+    public function it_should_convert_to_array_for_parcel_shop_with_cod(Authentication $auth): void
     {
         $auth->toArray()->willReturn(['username' => 'username', 'password' => 'password']);
 

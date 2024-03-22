@@ -1,56 +1,32 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DPD\Interconnector\Request;
 
 use DPD\Interconnector\Authentication;
 
-
 class ShipmentRequest extends Request implements RequestInterface
 {
-    private $name;
-    private $street;
-    private $city;
-    private $country;
-    private $postalCode;
-    private $numberOfParcels;
-    private $phone;
-    private $orderNumber;
-    private $remark;
-    private $codAmount;
-    private $parcelShopId;
-    private $name2;
-
     public function __construct(
         Authentication $auth,
-        string $name,
-        string $street, 
-        string $city,
-        string $country,
-        string $postalCode,
-        int $numberOfParcels,
-        string $phone,
-        string $orderNumber,
-        string $remark,
-        float $codAmount = 0.0,
-        ?string $parcelShopId = null,
-        string $name2 = null
+        private readonly string $name,
+        private readonly string $street,
+        private readonly string $city,
+        private readonly string $country,
+        private readonly string $postalCode,
+        private readonly int $numberOfParcels,
+        private readonly string $phone,
+        private readonly string $orderNumber,
+        private readonly string $remark,
+        private readonly float $codAmount = 0.0,
+        private readonly ?string $parcelShopId = null,
+        private readonly ?string $name2 = null
     ) {
         parent::__construct($auth);
-
-        $this->name = $name;
-        $this->name2 = $name2;
-        $this->street = $street;
-        $this->city = $city;
-        $this->country = $country;
-        $this->postalCode = $postalCode;
-        $this->numberOfParcels = $numberOfParcels;
-        $this->phone = $phone;
-        $this->orderNumber = $orderNumber;
-        $this->remark = $remark;
-        $this->codAmount = $codAmount;
-        $this->parcelShopId = $parcelShopId;
     }
 
+    #[\Override]
     public function toArray(): array
     {
         $request = array_merge(
@@ -71,12 +47,13 @@ class ShipmentRequest extends Request implements RequestInterface
         );
 
         $parcelType = 'D-B2C';
+
         if ($this->parcelShopId) {
             $request['parcelshop_id'] = $this->parcelShopId;
             $parcelType = 'PS';
         }
 
-        if ($this->codAmount) {
+        if ($this->codAmount !== 0.0) {
             $parcelType .= '-COD';
             $request['cod_amount'] = $this->codAmount;
         }

@@ -1,43 +1,28 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DPD\Interconnector\Request;
 
 use DPD\Interconnector\Authentication;
 
 class ParcelShopSearchRequest extends Request
 {
-    private $fetchGsPUDOpoint;
-    private $countryCode;
-    private $postCode;
-    private $street;
-    private $city;
-    private $id;
-    private $company;
-    private $retrieveOpeningHours;
-
     public function __construct(
         Authentication $authentication,
-        bool $fetchGsPUDOpoint, 
-        string $countryCode, 
-        ?string $postCode = null, 
-        ?string $street = null,
-        ?string $city = null,
-        ?string $id = null,
-        ?string $company = null,
-        bool $retrieveOpeningHours = false
+        private readonly bool $fetchGsPUDOpoint,
+        private readonly string $countryCode,
+        private readonly ?string $postCode = null,
+        private readonly ?string $street = null,
+        private readonly ?string $city = null,
+        private readonly ?string $id = null,
+        private readonly ?string $company = null,
+        private readonly bool $retrieveOpeningHours = false
     ) {
         parent::__construct($authentication);
-
-        $this->fetchGsPUDOpoint = $fetchGsPUDOpoint;
-        $this->countryCode = $countryCode;
-        $this->postCode = $postCode;
-        $this->street = $street;
-        $this->city = $city;
-        $this->id = $id;
-        $this->company = $company;
-        $this->retrieveOpeningHours = $retrieveOpeningHours;
     }
 
+    #[\Override]
     public function toArray(): array
     {
         return array_merge(
